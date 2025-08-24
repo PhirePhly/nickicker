@@ -1,0 +1,40 @@
+---
+# Nickicker configuration file
+# Copy this file to /etc/nickicker.conf and modify as needed
+
+# List of endpoints to test for connectivity
+endpoints:
+  - name: a.root-servers.net
+    addresses:
+      - 198.41.0.4
+      - 2001:503:ba3e::2:30
+  
+  - name: b.root-servers.net
+    addresses:
+      - 170.247.170.2
+      - 2801:1b8:10::b
+  
+  - name: google-dns
+    addresses:
+      - 8.8.8.8
+      - 8.8.4.4
+  
+  - name: cloudflare-dns
+    addresses:
+      - 1.1.1.1
+      - 1.0.0.1
+
+# How often to test connectivity (in seconds, minutes, or hours)
+# Examples: 30s, 5m, 1h
+test_interval: 30m
+
+# How long to wait before considering it an outage (and executing actions)
+# Examples: 5m, 1h, 2h
+outage_threshold: 2h
+
+# Actions to take when outage threshold is reached
+# Available actions: logbundle, reboot, email
+actions:
+  - logbundle
+  # - reboot  # Uncomment to enable reboot action (use with caution!)
+  # - email   # Uncomment to enable email alerts
